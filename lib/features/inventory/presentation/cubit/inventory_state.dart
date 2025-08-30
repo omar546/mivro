@@ -1,17 +1,30 @@
+// inventory_state.dart
 part of 'inventory_cubit.dart';
 
-abstract class InventoryState {}
-
-class InventoryInitial extends InventoryState {}
-
-class InventoryLoading extends InventoryState {}
-
-class InventoryLoaded extends InventoryState {
+class InventoryState {
   final List<Product> products;
-  InventoryLoaded(this.products);
-}
+  final List<Category> categories;
+  final bool isLoading;
+  final String? error;
 
-class InventoryError extends InventoryState {
-  final String message;
-  InventoryError(this.message);
+  InventoryState({
+    this.products = const [],
+    this.categories = const [],
+    this.isLoading = false,
+    this.error,
+  });
+
+  InventoryState copyWith({
+    List<Product>? products,
+    List<Category>? categories,
+    bool? isLoading,
+    String? error,
+  }) {
+    return InventoryState(
+      products: products ?? this.products,
+      categories: categories ?? this.categories,
+      isLoading: isLoading ?? this.isLoading,
+      error: error,
+    );
+  }
 }

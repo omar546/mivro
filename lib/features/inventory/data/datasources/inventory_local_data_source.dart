@@ -1,24 +1,38 @@
 import 'package:hive/hive.dart';
+import '../models/category_model.dart';
 import '../models/product_model.dart';
 
 class InventoryLocalDataSource {
-  final Box<ProductModel> box;
+  final Box<ProductModel> productBox;
+  final Box<CategoryModel> categoryBox;
 
-  InventoryLocalDataSource(this.box);
+  InventoryLocalDataSource(this.productBox, this.categoryBox);
 
   Future<void> addProduct(ProductModel product) async {
-    await box.put(product.id, product);
+    await productBox.put(product.id, product);
   }
 
   Future<void> deleteProduct(String id) async {
-    await box.delete(id);
+    await productBox.delete(id);
   }
 
   Future<void> updateProduct(ProductModel product) async {
-    await box.put(product.id, product);
+    await productBox.put(product.id, product);
   }
 
   Future<List<ProductModel>> getProducts() async {
-    return box.values.toList();
+    return productBox.values.toList();
+  }
+
+  Future<void> addCategory(CategoryModel category) async {
+    await categoryBox.put(category.name, category);
+  }
+
+  Future<void> deleteCategory(String name) async {
+    await categoryBox.delete(name);
+  }
+
+  Future<List<CategoryModel>> getCategories() async {
+    return categoryBox.values.toList();
   }
 }

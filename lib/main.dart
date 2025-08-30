@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mivro/core/router/app_router.dart';
 import 'package:mivro/core/colors.dart';
+import 'features/inventory/data/models/category_model.dart';
 import 'features/inventory/data/models/product_model_adapter.dart';
 import 'features/inventory/presentation/cubit/inventory_cubit.dart';
 import 'features/inventory/data/datasources/inventory_local_data_source.dart';
@@ -17,13 +17,15 @@ void main() async {
   // Init Hive
   await Hive.initFlutter();
   Hive.registerAdapter(ProductModelAdapter());
+  Hive.registerAdapter(CategoryModelAdapter());
 
   // Open a box for app settings and products
   await Hive.openBox('settings');
   final productsBox = await Hive.openBox<ProductModel>('products');
+  final categoryBox = await Hive.openBox<CategoryModel>('categories');
 
   // Prepare repository and local data source
-  final localDataSource = InventoryLocalDataSource(productsBox);
+  final localDataSource = InventoryLocalDataSource(productsBox, categoryBox);
   final repository = InventoryRepositoryImpl(localDataSource);
 
   runApp(MyApp(repository: repository));

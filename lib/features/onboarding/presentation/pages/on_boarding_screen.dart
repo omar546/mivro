@@ -71,9 +71,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             slideIconWidget: Icon(
               Icons.arrow_back_ios,
               color:
-              currentPage == 0 || currentPage == 2
-                  ? Colors.black
-                  : Colors.white,
+                  currentPage == 0 || currentPage == 2
+                      ? Colors.black
+                      : Colors.white,
             ),
           ),
 
@@ -86,20 +86,20 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: List.generate(
                 pages.length,
-                    (index) => AnimatedContainer(
+                (index) => AnimatedContainer(
                   duration: const Duration(milliseconds: 300),
                   margin: const EdgeInsets.symmetric(horizontal: 4),
                   width: currentPage == index ? 12 : 8,
                   height: currentPage == index ? 12 : 8,
                   decoration: BoxDecoration(
                     color:
-                    currentPage == index
-                        ? currentPage == 0 || currentPage == 2
-                        ? Colors.black
-                        : Colors.white
-                        : currentPage == 0 || currentPage == 2
-                        ? Colors.black54
-                        : Colors.white54,
+                        currentPage == index
+                            ? currentPage == 0 || currentPage == 2
+                                ? Colors.black
+                                : Colors.white
+                            : currentPage == 0 || currentPage == 2
+                            ? Colors.black54
+                            : Colors.white54,
                     shape: BoxShape.circle,
                   ),
                 ),
@@ -120,9 +120,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 "Skip",
                 style: TextStyle(
                   color:
-                  currentPage == 0 || currentPage == 2
-                      ? Colors.black
-                      : Colors.white,
+                      currentPage == 0 || currentPage == 2
+                          ? Colors.black
+                          : Colors.white,
                 ),
               ),
             ),
@@ -146,9 +146,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 currentPage == pages.length - 1 ? "Done" : "Next",
                 style: TextStyle(
                   color:
-                  currentPage == 0 || currentPage == 2
-                      ? Colors.black
-                      : Colors.white,
+                      currentPage == 0 || currentPage == 2
+                          ? Colors.black
+                          : Colors.white,
                 ),
               ),
             ),

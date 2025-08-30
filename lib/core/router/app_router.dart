@@ -12,16 +12,14 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: '/',
       name: 'splash',
-      pageBuilder: (context, state) => const MaterialPage(
-        child: SplashScreen(),
-      ),
+      pageBuilder:
+          (context, state) => const MaterialPage(child: SplashScreen()),
     ),
     GoRoute(
       path: '/onboarding',
       name: 'onboarding',
-      pageBuilder: (context, state) => const MaterialPage(
-        child: OnboardingScreen(),
-      ),
+      pageBuilder:
+          (context, state) => const MaterialPage(child: OnboardingScreen()),
     ),
 
     /// ShellRoute wraps HomeLayout
@@ -33,30 +31,31 @@ final GoRouter appRouter = GoRouter(
         GoRoute(
           path: '/home',
           name: 'home',
-          pageBuilder: (context, state) => const MaterialPage(
-            child: InventoryScreen(),
-          ),
+          pageBuilder:
+              (context, state) => const MaterialPage(child: InventoryScreen()),
         ),
         GoRoute(
           path: '/sales',
           name: 'sales',
-          pageBuilder: (context, state) => const MaterialPage(
-            child: Center(child: Text("Sales Page")),
-          ),
+          pageBuilder:
+              (context, state) =>
+                  const MaterialPage(child: Center(child: Text("Sales Page"))),
         ),
         GoRoute(
           path: '/dashboard',
           name: 'dashboard',
-          pageBuilder: (context, state) => const MaterialPage(
-            child: Center(child: Text("Dashboard Page")),
-          ),
+          pageBuilder:
+              (context, state) => const MaterialPage(
+                child: Center(child: Text("Dashboard Page")),
+              ),
         ),
         GoRoute(
           path: '/settings',
           name: 'settings',
-          pageBuilder: (context, state) => const MaterialPage(
-            child: Center(child: Text("Settings Page")),
-          ),
+          pageBuilder:
+              (context, state) => const MaterialPage(
+                child: Center(child: Text("Settings Page")),
+              ),
         ),
       ],
     ),
