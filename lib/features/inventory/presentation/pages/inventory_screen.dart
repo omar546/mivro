@@ -279,12 +279,15 @@ class _InventoryScreenState extends State<InventoryScreen> {
     bool isLowStock,
   ) {
     return Card(
+      color:
+          Theme.of(context).brightness == Brightness.dark
+              ? AppColors.dark
+              : AppColors.surface,
       margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
       elevation: 2,
       child: ListTile(
         leading: CircleAvatar(
-          backgroundColor:
-              isLowStock ? Colors.orange : Theme.of(context).primaryColor,
+          backgroundColor: isLowStock ? Colors.orange : AppColors.primary,
           child: Icon(
             isLowStock ? Icons.warning : Icons.inventory,
             color: Colors.white,
@@ -297,12 +300,19 @@ class _InventoryScreenState extends State<InventoryScreen> {
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('ID: ${product.id}'),
-            Text('Category: ${product.category}'),
-            Text('Price: \$${product.price.toStringAsFixed(2)}'),
+            Text('ID: ${product.id}', style: const TextStyle(fontSize: 12)),
+            Text(
+              'Category: ${product.category}',
+              style: const TextStyle(fontSize: 12),
+            ),
+            Text(
+              'Price: \$${product.price.toStringAsFixed(2)}',
+              style: const TextStyle(fontSize: 12),
+            ),
             Text(
               'Qty: ${product.quantity}',
               style: TextStyle(
+                fontSize: 12,
                 color: isLowStock ? Colors.orange : null,
                 fontWeight: isLowStock ? FontWeight.bold : null,
               ),

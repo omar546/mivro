@@ -51,7 +51,10 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.light,
           scaffoldBackgroundColor: AppColors.backgroundW,
           primaryColor: AppColors.primary,
-          textTheme: GoogleFonts.interTextTheme(),
+          textTheme: GoogleFonts.interTextTheme().apply(
+            bodyColor: Colors.black,
+            displayColor: Colors.black,
+          ),
           floatingActionButtonTheme: const FloatingActionButtonThemeData(
             splashColor: AppColors.warning,
             backgroundColor: AppColors.error,
@@ -63,7 +66,10 @@ class MyApp extends StatelessWidget {
           primarySwatch: AppColors.primarySwatch,
           scaffoldBackgroundColor: AppColors.backgroundB,
           primaryColor: AppColors.primary,
-          textTheme: GoogleFonts.interTextTheme(),
+          textTheme: GoogleFonts.interTextTheme().apply(
+            bodyColor: Colors.white,
+            displayColor: Colors.white,
+          ),
           floatingActionButtonTheme: const FloatingActionButtonThemeData(
             splashColor: AppColors.warning,
             backgroundColor: AppColors.error,

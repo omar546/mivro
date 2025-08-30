@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:mivro/core/colors.dart';
 import 'package:qr_flutter/qr_flutter.dart';
@@ -357,7 +356,10 @@ class _BrandInfoScreenState extends State<BrandInfoScreen> {
                                   _buildSocialIcon(
                                     FontAwesomeIcons.xTwitter,
                                     brand.twitter,
-                                    Colors.black54,
+                                    Theme.of(context).brightness ==
+                                            Brightness.dark
+                                        ? Colors.white24
+                                        : Colors.black54,
                                   ),
                               ],
                             ),

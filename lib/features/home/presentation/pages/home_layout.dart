@@ -1,9 +1,11 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../core/colors.dart';
 
 class HomeLayout extends StatelessWidget {
   final Widget child;
+
   const HomeLayout({super.key, required this.child});
 
   static final List<String> tabs = ['/home', '/sales', '/dashboard', '/brand'];
@@ -29,31 +31,67 @@ class HomeLayout extends StatelessWidget {
 
     return Scaffold(
       body: child,
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: selectedIndex,
+      bottomNavigationBar: CurvedNavigationBar(
+        index: selectedIndex,
         onTap: (index) => _onItemTapped(context, index),
-        selectedItemColor: AppColors.accent,
-        unselectedItemColor: Colors.grey,
-        type: BottomNavigationBarType.fixed,
-        showSelectedLabels: true,
-        showUnselectedLabels: false,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.inventory_2_rounded),
-            label: "Inventory",
+        backgroundColor:
+            Theme.of(context).brightness == Brightness.dark
+                ? AppColors.primary
+                : AppColors.accent,
+        color:
+            Theme.of(context).brightness == Brightness.dark
+                ? AppColors.dark
+                : AppColors.surface,
+        // selectedItemColor: AppColors.accent,
+        // unselectedItemColor: Colors.grey,
+        // type: BottomNavigationBarType.fixed,
+        // showSelectedLabels: true,
+        // showUnselectedLabels: false,
+        items: [
+          Icon(
+            Icons.inventory_2_rounded,
+            color:
+                Theme.of(context).brightness == Brightness.dark
+                    ? AppColors.accent
+                    : AppColors.primary,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.point_of_sale_rounded),
-            label: "Sales",
+          Icon(
+            Icons.point_of_sale_rounded,
+            color:
+                Theme.of(context).brightness == Brightness.dark
+                    ? AppColors.accent
+                    : AppColors.primary,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.analytics_rounded),
-            label: "Dashboard",
+          Icon(
+            Icons.analytics_rounded,
+            color:
+                Theme.of(context).brightness == Brightness.dark
+                    ? AppColors.accent
+                    : AppColors.primary,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_bag_rounded),
-            label: "Brand",
+          Icon(
+            Icons.shopping_bag_rounded,
+            color:
+                Theme.of(context).brightness == Brightness.dark
+                    ? AppColors.accent
+                    : AppColors.primary,
           ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.inventory_2_rounded),
+          //   label: "Inventory",
+          // ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.point_of_sale_rounded),
+          //   label: "Sales",
+          // ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.analytics_rounded),
+          //   label: "Dashboard",
+          // ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.shopping_bag_rounded),
+          //   label: "Brand",
+          // ),
         ],
       ),
     );
