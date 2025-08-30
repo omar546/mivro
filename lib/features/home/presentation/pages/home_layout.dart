@@ -6,12 +6,7 @@ class HomeLayout extends StatelessWidget {
   final Widget child;
   const HomeLayout({super.key, required this.child});
 
-  static final List<String> tabs = [
-    '/home',
-    '/sales',
-    '/dashboard',
-    '/settings',
-  ];
+  static final List<String> tabs = ['/home', '/sales', '/dashboard', '/brand'];
 
   int _getSelectedIndex(BuildContext context) {
     final location = GoRouterState.of(context).uri.toString();
@@ -40,22 +35,24 @@ class HomeLayout extends StatelessWidget {
         selectedItemColor: AppColors.accent,
         unselectedItemColor: Colors.grey,
         type: BottomNavigationBarType.fixed,
+        showSelectedLabels: true,
+        showUnselectedLabels: false,
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.inventory_2),
+            icon: Icon(Icons.inventory_2_rounded),
             label: "Inventory",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.point_of_sale),
+            icon: Icon(Icons.point_of_sale_rounded),
             label: "Sales",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.dashboard),
+            icon: Icon(Icons.analytics_rounded),
             label: "Dashboard",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: "Settings",
+            icon: Icon(Icons.shopping_bag_rounded),
+            label: "Brand",
           ),
         ],
       ),
