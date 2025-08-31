@@ -62,7 +62,10 @@ class _SalesScreenState extends State<SalesScreen> {
     final products = context.watch<InventoryCubit>().state.products;
 
     return Scaffold(
-      appBar: AppBar(title: const Text("Sales")),
+      appBar: AppBar(
+        forceMaterialTransparency: true,
+        title: const Text("Sales"),
+      ),
       body: Column(
         children: [
           // Date Filter Section

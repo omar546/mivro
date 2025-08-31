@@ -29,6 +29,25 @@ class InventoryLocalDataSource {
   }
 
   Future<void> deleteCategory(String name) async {
+    const String fallbackCategory = "Uncategorized";
+
+    // Ensure fallback category exists
+    if (!categoryBox.containsKey(fallbackCategory)) {
+      await categoryBox.put(
+        fallbackCategory,
+        CategoryModel(name: fallbackCategory),
+      );
+    }
+
+    // Update products that used this category
+    for (var product in productBox.values) {
+      if (product.category == name) {
+        product.category = fallbackCategory;
+        await product.save(); // quicker than re-put
+      }
+    }
+
+    // Delete the category
     await categoryBox.delete(name);
   }
 

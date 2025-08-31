@@ -78,12 +78,13 @@ class _InventoryScreenState extends State<InventoryScreen> {
     return filteredProducts;
   }
 
-  bool _isLowStock(int quantity) => quantity < 50;
+  bool _isLowStock(int quantity) => quantity < 10;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        forceMaterialTransparency: true,
         title: const Text('Inventory'),
         actions: [
           IconButton(
@@ -108,6 +109,7 @@ class _InventoryScreenState extends State<InventoryScreen> {
                   vertical: 4,
                 ),
                 decoration: BoxDecoration(
+                  color: Theme.of(context).scaffoldBackgroundColor,
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black.withOpacity(0.1),
@@ -275,10 +277,12 @@ class _InventoryScreenState extends State<InventoryScreen> {
       elevation: 2,
       child: ListTile(
         leading: CircleAvatar(
+          radius: 15,
           backgroundColor: isLowStock ? Colors.orange : AppColors.primary,
           child: Icon(
             isLowStock ? Icons.warning : Icons.inventory,
             color: Colors.white,
+            size: 15,
           ),
         ),
         title: Text(
@@ -316,7 +320,10 @@ class _InventoryScreenState extends State<InventoryScreen> {
                   () => _showProductBottomSheet(context, product: product),
             ),
             IconButton(
-              icon: const Icon(Icons.delete),
+              icon: const Icon(
+                Icons.delete_outline_rounded,
+                color: AppColors.error,
+              ),
               onPressed: () => _showDeleteConfirmation(context, product),
             ),
           ],

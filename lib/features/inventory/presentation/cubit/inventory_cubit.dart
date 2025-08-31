@@ -58,6 +58,7 @@ class InventoryCubit extends Cubit<InventoryState> {
   Future<void> deleteCategory(String name) async {
     await repository.deleteCategory(name);
     await loadCategories();
+    await loadProducts();
   }
 
   // NEW: Update product quantity

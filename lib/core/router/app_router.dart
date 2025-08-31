@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../features/analytics/presentation/analytics_screen.dart';
 import '../../features/home/presentation/pages/home_layout.dart';
 import '../../features/inventory/presentation/pages/inventory_screen.dart';
 import '../../features/onboarding/presentation/pages/on_boarding_screen.dart';
@@ -46,9 +47,7 @@ final GoRouter appRouter = GoRouter(
           path: '/dashboard',
           name: 'dashboard',
           pageBuilder:
-              (context, state) => const MaterialPage(
-                child: Center(child: Text("Dashboard Page")),
-              ),
+              (context, state) => const MaterialPage(child: AnalyticsScreen()),
         ),
         GoRoute(
           path: '/brand',
