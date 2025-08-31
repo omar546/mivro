@@ -6,6 +6,7 @@ import '../../features/inventory/presentation/pages/inventory_screen.dart';
 import '../../features/onboarding/presentation/pages/on_boarding_screen.dart';
 import '../../features/onboarding/presentation/pages/splash_screen.dart';
 import '../../features/brand/presentation/pages/brand_screen.dart';
+import '../../features/sales/presentation/pages/sales_screen.dart';
 
 final GoRouter appRouter = GoRouter(
   initialLocation: '/',
@@ -39,8 +40,7 @@ final GoRouter appRouter = GoRouter(
           path: '/sales',
           name: 'sales',
           pageBuilder:
-              (context, state) =>
-                  const MaterialPage(child: Center(child: Text("Sales Page"))),
+              (context, state) => const MaterialPage(child: SalesScreen()),
         ),
         GoRoute(
           path: '/dashboard',

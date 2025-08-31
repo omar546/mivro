@@ -59,4 +59,23 @@ class InventoryCubit extends Cubit<InventoryState> {
     await repository.deleteCategory(name);
     await loadCategories();
   }
+
+  // NEW: Update product quantity
+  Future<void> updateProductQuantity(
+    String productId,
+    int quantityToAdd,
+  ) async {
+    final products = state.products;
+    final index = products.indexWhere((p) => p.id == productId);
+    if (index != -1) {
+      final updatedQty =
+          (products[index].quantity + quantityToAdd)
+              .clamp(0, double.infinity)
+              .toInt();
+      final updatedProduct = products[index].copyWith(quantity: updatedQty);
+      products[index] = updatedProduct;
+      repository.updateProduct(updatedProduct);
+      await loadCategories();
+    }
+  }
 }

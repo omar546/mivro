@@ -78,16 +78,12 @@ class _InventoryScreenState extends State<InventoryScreen> {
     return filteredProducts;
   }
 
-  bool _isLowStock(int quantity) => quantity < 5;
+  bool _isLowStock(int quantity) => quantity < 50;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor:
-            Theme.of(context).brightness == Brightness.dark
-                ? AppColors.dark
-                : AppColors.surface,
         title: const Text('Inventory'),
         actions: [
           IconButton(
@@ -112,10 +108,6 @@ class _InventoryScreenState extends State<InventoryScreen> {
                   vertical: 4,
                 ),
                 decoration: BoxDecoration(
-                  color:
-                      Theme.of(context).brightness == Brightness.dark
-                          ? AppColors.dark
-                          : AppColors.surface,
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black.withOpacity(0.1),
@@ -279,10 +271,6 @@ class _InventoryScreenState extends State<InventoryScreen> {
     bool isLowStock,
   ) {
     return Card(
-      color:
-          Theme.of(context).brightness == Brightness.dark
-              ? AppColors.dark
-              : AppColors.surface,
       margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
       elevation: 2,
       child: ListTile(
